@@ -6,14 +6,14 @@ import { BsFillTrash3Fill, BsPencilFill } from 'react-icons/bs'
 
 const index = () => {
 
-    const [fornecedor, setfornecedor] = useState([])
+    const [estoque, setestoque] = useState([])
 
     useEffect(() => {
-        setfornecedor(getAll())
+        setestoque(getAll())
     }, [])
     
     function getAll(){
-        return JSON.parse(window.localStorage.getItem('fornecedor')) || []
+        return JSON.parse(window.localStorage.getItem('estoque')) || []
         }
         
 
@@ -22,40 +22,42 @@ function excluir(i){
     if (confirm('Deseja realmente excluir o registro?')) {
         const itens = getAll()
         itens.splice(i, 1) 
-        window.localStorage.setItem('fornecedor', JSON.stringify(itens))
-        setfornecedor(itens)
+        window.localStorage.setItem('estoque', JSON.stringify(itens))
+        setestoque(itens)
     }
 }
 
     return (
-        <Pagina titulo="Fornecedor">
+        <Pagina titulo="Estoque">
 
-            <Link href="/fornecedor/formforne" className='mb-2 btn btn-primary'>
+            <Link href="/estoque/formestoque" className='mb-2 btn btn-primary'>
                 Novo
             </Link>
 
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Razão Social</th>
-                        <th>CNPJ</th>
-                        <th>Produto</th>
-                        <th>Prazo</th>
-                        <th>Endereço</th>
+                        <th>Matéria prima</th>
+                        <th>Código de barra</th>
+                        <th>Peso</th>
+                        <th>Sabor</th>
+                        <th>Fornecedor</th>
+                        <th>Quantidade</th>
                         <th> Ações </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {fornecedor.map((fornecedor, index) => (
+                    {estoque.map((estoque, index) => (
                         <tr key={index}>
-                            <td>{fornecedor.razaosocial}</td>
-                            <td>{fornecedor.cnpj}</td>
-                            <td>{fornecedor.produto}</td>
-                            <td>{fornecedor.prazo}</td>
-                            <td>{fornecedor.endereco}</td>
+                            <td>{estoque.materiaprima}</td>
+                            <td>{estoque.codigodebarra}</td>
+                            <td>{estoque.peso}</td>
+                            <td>{estoque.sabor}</td>
+                            <td>{estoque.fornecedor}</td>
+                            <td>{estoque.quantidade}</td>
                             <td>
                                 <BsFillTrash3Fill title="Excluir" onClick={() => excluir(index)} className='text-danger'/>
-                                <Link href={'/fornecedor/' + index}>
+                                <Link href={'/estoque/' + index}>
                                 <BsPencilFill/>
                                 </Link>
                             </td>

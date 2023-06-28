@@ -16,8 +16,8 @@ const id = () => {
         if (query.id) {
             const clientes = JSON.parse(window.localStorage.getItem('clientes'))
             const cliente = clientes[query.id]
-            for (let campo in clientes) {
-                setValue(campo, clientes[campo])
+            for (let campo in cliente) {
+                setValue(campo, cliente[campo])
             }
         }
     }, [query.id])

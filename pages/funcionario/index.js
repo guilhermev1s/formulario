@@ -6,14 +6,14 @@ import { BsFillTrash3Fill, BsPencilFill } from 'react-icons/bs'
 
 const index = () => {
 
-    const [clientes, setclientes] = useState([])
+    const [funcionario, setfuncionario] = useState([])
 
     useEffect(() => {
-        setclientes(getAll())
+        setfuncionario(getAll())
     }, [])
     
     function getAll(){
-        return JSON.parse(window.localStorage.getItem('clientes')) || []
+        return JSON.parse(window.localStorage.getItem('funcionario')) || []
         }
         
 
@@ -22,15 +22,15 @@ function excluir(i){
     if (confirm('Deseja realmente excluir o registro?')) {
         const itens = getAll()
         itens.splice(i, 1) 
-        window.localStorage.setItem('clientes', JSON.stringify(itens))
-        setclientes(itens)
+        window.localStorage.setItem('funcionario', JSON.stringify(itens))
+        setfuncionario(itens)
     }
 }
 
     return (
-        <Pagina titulo="Clientes">
+        <Pagina titulo="Funcionários">
 
-            <Link href="/clientes/formclientes" className='mb-2 btn btn-primary'>
+            <Link href="/funcionario/formfunc" className='mb-2 btn btn-primary'>
                 Novo
             </Link>
 
@@ -38,32 +38,24 @@ function excluir(i){
                 <thead>
                     <tr>
                         <th>Nome</th>
+                        <th>Função</th>
                         <th>CPF</th>
-                        <th>Email</th>
                         <th>Telefone</th>
-                        <th>CEP</th>
-                        <th>Logradouro</th>
-                        <th>Complemento</th>
-                        <th>Numero</th>
-                        <th>Bairro</th>
+                        <th>Endereço</th>
                         <th> Ações </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {clientes.map((clientes, index) => (
+                    {funcionario.map((funcionario, index) => (
                         <tr key={index}>
-                            <td>{clientes.nome}</td>
-                            <td>{clientes.cpf}</td>
-                            <td>{clientes.email}</td>
-                            <td>{clientes.telefone}</td>
-                            <td>{clientes.cep}</td>
-                            <td>{clientes.logradouro}</td>
-                            <td>{clientes.complemento}</td>
-                            <td>{clientes.numero}</td>
-                            <td>{clientes.bairro}</td>
+                            <td>{funcionario.nome}</td>
+                            <td>{funcionario.funcao}</td>
+                            <td>{funcionario.cpf}</td>
+                            <td>{funcionario.telefone}</td>
+                            <td>{funcionario.endereco}</td>
                             <td>
                                 <BsFillTrash3Fill title="Excluir" onClick={() => excluir(index)} className='text-danger'/>
-                                <Link href={'/clientes/' + index}>
+                                <Link href={'/funcionario/' + index}>
                                 <BsPencilFill/>
                                 </Link>
                             </td>
