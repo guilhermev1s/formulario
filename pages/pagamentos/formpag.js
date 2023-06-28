@@ -18,9 +18,9 @@ const formpag = () => {
         push("/pagamentos")
     }
 
-  return (
-    <Pagina titulo="Folhas de Pagamentos">
-<Form>
+    return (
+        <Pagina titulo="Folhas de Pagamentos">
+            <Form>
                 <Form.Group className="mb-3" controlId="remuneração">
                     <Form.Label>Remuneração: </Form.Label>
                     <Form.Control type="number" {...register('remuneração')} />
@@ -52,11 +52,11 @@ const formpag = () => {
                     </Link>
                 </div>
             </Form>
-<br/>
-<br/>
-<br/>
-    </Pagina>
-  )
+            <br />
+            <br />
+            <br />
+        </Pagina>
+    )
 }
 
 export default formpag

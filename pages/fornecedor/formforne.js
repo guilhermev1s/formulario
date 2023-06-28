@@ -18,9 +18,9 @@ const formforne = () => {
         push("/fornecedor")
     }
 
-  return (
-    <Pagina titulo="Fornecedor">
-<Form>
+    return (
+        <Pagina titulo="Fornecedor">
+            <Form>
                 <Form.Group className="mb-3" controlId="razaosocial">
                     <Form.Label>Razão Social: </Form.Label>
                     <Form.Control type="text" {...register('razaosocial')} />
@@ -52,11 +52,11 @@ const formforne = () => {
                     </Link>
                 </div>
             </Form>
-<br/>
-<br/>
-<br/>
-    </Pagina>
-  )
+            <br />
+            <br />
+            <br />
+        </Pagina>
+    )
 }
 
 export default formforne

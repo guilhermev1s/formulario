@@ -6,7 +6,7 @@ const Cabecalho = () => {
     <>
       {['xxl'].map((expand) => (
         <Navbar key={expand} expand={expand} bg="success" variant="light" className="variant-dark-bg-body-tertiary mb-3">
-          <Container fluid>
+          <Container bg="success" variant="light" fluid>
             <Navbar.Brand >Pizzaria</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -14,7 +14,7 @@ const Cabecalho = () => {
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"
             >
-              <Offcanvas.Header bg="dark" variant="light" closeButton>
+              <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
                   Menu
                 </Offcanvas.Title>
