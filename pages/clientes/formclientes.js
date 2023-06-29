@@ -34,10 +34,6 @@ const formclientes = () => {
                 <Form.Group className="mb-3" controlId="nome">
                     <Form.Label>Nome: </Form.Label>
                     <Form.Control isInvalid={errors.nome} type="text" {...register('nome', cadastroValidators.nome)} />
-               {
-              errors.nome &&
-              <p className='mt-1 text-danger'>{errors.nome.message}</p>
-              }
         </Form.Group>
 
                 <Form.Group className="mb-3" controlId="cpf">
@@ -54,19 +50,11 @@ const formclientes = () => {
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" {...register('email', cadastroValidators.email)} />
-          {
-              errors.email &&
-              <p className='mt-1 text-danger'>{errors.email.message}</p>
-          }
         </Form.Group>
 
                 <Form.Group className="mb-3" controlId="telefone">
                     <Form.Label>Telefone</Form.Label>
                     <Form.Control type="tel" {...register('telefone', cadastroValidators.telefone)} />
-          {
-              errors.telefone &&
-              <p className='mt-1 text-danger'>{errors.telefone.message}</p>
-          }
         </Form.Group>
 
                 <Form.Group className="mb-3" controlId="cep">
