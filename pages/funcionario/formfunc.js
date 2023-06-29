@@ -10,13 +10,21 @@ import cadastroValidators from '@/validators/cadastroValidators'
 
 const formfunc = () => {
     const { push } = useRouter()
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm()
 
     function salvar(dados) {
         const funcionario = JSON.parse(window.localStorage.getItem('funcionario')) || []
         funcionario.unshift(dados)
         window.localStorage.setItem('funcionario', JSON.stringify(funcionario))
         push("/funcionario")
+    }
+
+    function handleChange(event) {
+        const name = event.target.name
+        const valor = event.target.value
+        const mascara = event.target.getAttribute('mask')
+
+        setValue(name, mask(valor, mascara));
     }
 
     return (
@@ -33,23 +41,30 @@ const formfunc = () => {
 
                 <Form.Group className="mb-3" controlId="funcao">
                     <Form.Label>Função: </Form.Label>
-                    <Form.Control type="text" {...register('funcao')} />
+                    <Form.Control type="text" {...register('funcao', cadastroValidators.funcao)} />
+                    {
+                        errors.funcao &&
+                        <p className='mt-1 text-danger'>{errors.funcao.message}</p>
+                    }
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="cpf">
                     <Form.Label>CPF: </Form.Label>
-                    <Form.Control isInvalid={errors.cpf} type="text" {...register('cpf', cadastroValidators.cpf)} />
+                    <Form.Control mask='999.999.999-99'
+                        type="text"
+                        {...register('cpf', cadastroValidators.cpf)}
+                        onChange={handleChange} />
           {
               errors.cpf &&
               <p className='mt-1 text-danger'>{errors.cpf.message}</p>
           }
         </Form.Group>
 
-
-
                 <Form.Group className="mb-3" controlId="telefone">
                     <Form.Label>Telefone: </Form.Label>
-                    <Form.Control type="tel" {...register('telefone', cadastroValidators.telefone)} />
+                    <Form.Control mask='(99)99999-9999' type="tel" 
+                    {...register('telefone', cadastroValidators.telefone)} 
+                    onChange={handleChange}/>
           {
               errors.telefone &&
               <p className='mt-1 text-danger'>{errors.telefone.message}</p>

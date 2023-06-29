@@ -6,10 +6,11 @@ import { Button, Form } from 'react-bootstrap'
 import { BsCheckLg } from 'react-icons/bs'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { useForm } from 'react-hook-form'
+import cadastroValidators from '@/validators/cadastroValidators'
 
 const formestoque = () => {
     const { push } = useRouter()
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
     function salvar(dados) {
         const estoque = JSON.parse(window.localStorage.getItem('estoque')) || []
@@ -23,17 +24,25 @@ const formestoque = () => {
 <Form>
                 <Form.Group className="mb-3" controlId="materiaprima">
                     <Form.Label>Matéria prima: </Form.Label>
-                    <Form.Control type="text" {...register('materiaprima')} />
+                    <Form.Control type="text" {...register('materiaprima', cadastroValidators.materiaprima)} />
+                    {
+                        errors.materiaprima &&
+                        <p className='mt-1 text-danger'>{errors.materiaprima.message}</p>
+                    }
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="codigodebarra">
                     <Form.Label>Código de barra: </Form.Label>
-                    <Form.Control type="number" {...register('codigodebarra')} />
+                    <Form.Control type="text" {...register('codigodebarra', cadastroValidators.codigodebarra)} />
+                    {
+                        errors.codigodebarra &&
+                        <p className='mt-1 text-danger'>{errors.codigodebarra.message}</p>
+                    }
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="peso">
                     <Form.Label>Peso: </Form.Label>
-                    <Form.Control type="number" {...register('peso')} />
+                    <Form.Control type="text" {...register('peso')} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="sabor">
@@ -43,12 +52,20 @@ const formestoque = () => {
 
                 <Form.Group className="mb-3" controlId="fornecedor">
                     <Form.Label>Fornecedor: </Form.Label>
-                    <Form.Control type="text" {...register('fornecedor')} />
+                    <Form.Control type="text" {...register('fornecedor', cadastroValidators.fornecedor)} />
+                    {
+                        errors.fornecedor &&
+                        <p className='mt-1 text-danger'>{errors.fornecedor.message}</p>
+                    }
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="quantidade">
                     <Form.Label>Quantidade: </Form.Label>
-                    <Form.Control type="text" {...register('quantidade')} />
+                    <Form.Control type="number" {...register('quantidade', cadastroValidators.quantidade)} />
+                    {
+                        errors.quantidade &&
+                        <p className='mt-1 text-danger'>{errors.quantidade.message}</p>
+                    }
                 </Form.Group>
 
 
@@ -64,6 +81,7 @@ const formestoque = () => {
                     </Link>
                 </div>
             </Form>
+<br/>
 <br/>
 <br/>
     </Pagina>

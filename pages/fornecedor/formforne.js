@@ -6,10 +6,12 @@ import { Button, Form } from 'react-bootstrap'
 import { BsCheckLg } from 'react-icons/bs'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { useForm } from 'react-hook-form'
+import { mask } from 'remask'
+import cadastroValidators from '@/validators/cadastroValidators'
 
 const formforne = () => {
     const { push } = useRouter()
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, setValue, formState: {errors} } = useForm()
 
     function salvar(dados) {
         const fornecedor = JSON.parse(window.localStorage.getItem('fornecedor')) || []
@@ -17,6 +19,14 @@ const formforne = () => {
         window.localStorage.setItem('fornecedor', JSON.stringify(fornecedor))
         push("/fornecedor")
     }
+
+    function handleChange(event) {
+        const name = event.target.name
+        const valor = event.target.value
+        const mascara = event.target.getAttribute('mask')
+    
+        setValue(name, mask(valor, mascara));
+        }
 
     return (
         <Pagina titulo="Fornecedor">
@@ -28,7 +38,11 @@ const formforne = () => {
 
                 <Form.Group className="mb-3" controlId="cnpj">
                     <Form.Label>CNPJ: </Form.Label>
-                    <Form.Control type="number" {...register('cnpj')} />
+                    <Form.Control type="text" {...register('cnpj', cadastroValidators.cnpj)} />
+                    {
+                        errors.cnpj &&
+                        <p className='mt-1 text-danger'>{errors.cnpj.message}</p>
+                    }
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="prazo">

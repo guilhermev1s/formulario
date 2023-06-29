@@ -1,5 +1,3 @@
-import React from 'react'
-
 const cadastroValidators = {
     nome: {
         required: "Nome obrigatório ",
@@ -23,7 +21,7 @@ const cadastroValidators = {
           message: "Apenas números ",
         },
       },
-      matricula: {
+      codigodebarra: {
         minLength: {
           value: 2,
           message: "Mínimo de 2 caracteres ",
@@ -111,6 +109,68 @@ const cadastroValidators = {
           value: 100,
           message: "Máximo de 100 caracteres ",
         },
+      },
+      funcao: {
+        required: "Função obrigatório",
+        minLength: {
+          value: 2,
+          message: "Mínimo de 2 caracteres ",
+        },
+        maxLength: {
+          value: 100,
+          message: "Máximo de 100 caracteres ",
+        },
+      },
+      materiaprima: {
+        minLength: {
+          value: 10,
+          message: "Mínimo de 2 caracteres ",
+        },
+        maxLength: {
+          value: 30,
+          message: "Máximo de 100 caracteres ",
+        },
+      },
+      fornecedor: {
+        required: "Fornecedor obrigatório ",
+        minLength: {
+          value: 1,
+          message: "Mínimo de 1 caractere ",
+        },
+        maxLength: {
+          value: 100,
+          message: "Máximo de 100 caracteres ",
+        },
+      },
+      quantidade: {
+        required: "Quantidade obrigatória ",
+        minLength: {
+          value: 1,
+          message: "Mínimo de 1 caractere ",
+        },
+        maxLength: {
+          value: 100,
+          message: "Máximo de 50 caracteres ",
+        },
+        pattern: {
+            value: /[0-9]+$/,
+            message: "Apenas números ",
+          },
+      },
+      cnpj: {
+        required: "CNPJ obrigatório ",
+        minLength: {
+          value: 1,
+          message: "Mínimo de 1 caractere ",
+        },
+        maxLength: {
+          value: 100,
+          message: "Máximo de 50 caracteres ",
+        },
+        pattern: {
+            value: /[0-9]+$/,
+            message: "Apenas números ",
+          },
       },
     };
     

@@ -6,6 +6,7 @@ import { Button, Form } from 'react-bootstrap'
 import { BsCheckLg } from 'react-icons/bs'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { useForm } from 'react-hook-form'
+import { mask } from 'remask'
 
 const formpag = () => {
     const { push } = useRouter()
@@ -17,6 +18,14 @@ const formpag = () => {
         window.localStorage.setItem('pagamentos', JSON.stringify(pagamentos))
         push("/pagamentos")
     }
+
+    function handleChange(event) {
+        const name = event.target.name
+        const valor = event.target.value
+        const mascara = event.target.getAttribute('mask')
+    
+        setValue(name, mask(valor, mascara));
+        }
 
     return (
         <Pagina titulo="Folhas de Pagamentos">
