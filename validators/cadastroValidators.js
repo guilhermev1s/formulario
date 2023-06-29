@@ -159,9 +159,90 @@ const cadastroValidators = {
       },
       cnpj: {
         required: "CNPJ obrigatório ",
+        maxLength: {
+          value: 18,
+          message: "Máximo de 18 caracteres ",
+        },
+        pattern: {
+            value: /[0-9]+$/,
+            message: "Apenas números ",
+          },
+      },
+      remuneracao: {
+        required: "Remuneração é obrigatório ",
         minLength: {
           value: 1,
           message: "Mínimo de 1 caractere ",
+        },
+        maxLength: {
+          value: 100,
+          message: "Máximo de 50 caracteres ",
+        },
+        pattern: {
+            value: /[0-9]+$/,
+            message: "Apenas números ",
+          },
+      },
+      desconto: {
+        required: "Desconto é obrigatório ",
+        minLength: {
+          value: 1,
+          message: "Mínimo de 1 caractere ",
+        },
+        maxLength: {
+          value: 100,
+          message: "Máximo de 50 caracteres ",
+        },
+        pattern: {
+            value: /[0-9]+$/,
+            message: "Apenas números ",
+          },
+      },
+      comissao: {
+        required: "CNPJ obrigatório ",
+        minLength: {
+          value: 3,
+          message: "Mínimo de 3 caractere ",
+        },
+        maxLength: {
+          value: 100,
+          message: "Máximo de 50 caracteres ",
+        },
+        pattern: {
+            value: /[0-9]+$/,
+            message: "Apenas números ",
+          },
+      },
+      passagem: {
+        minLength: {
+          value: 3,
+          message: "Mínimo de 3 caractere ",
+        },
+        maxLength: {
+          value: 100,
+          message: "Máximo de 50 caracteres ",
+        },
+        pattern: {
+            value: /[0-9]+$/,
+            message: "Apenas números ",
+          },
+      },
+      razaosocial: {
+        required: "Razão Social é obrigatório ",
+        minLength: {
+          value: 4,
+          message: "Mínimo de 4 caractere ",
+        },
+        maxLength: {
+          value: 100,
+          message: "Máximo de 50 caracteres ",
+        },
+      },
+      prazo: {
+        required: "Prazo é obrigatório ",
+        minLength: {
+          value: 4,
+          message: "Mínimo de 4 caractere ",
         },
         maxLength: {
           value: 100,

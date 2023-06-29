@@ -33,7 +33,7 @@ function excluir(i){
             <Link href="/clientes/formclientes" className='mb-2 btn btn-primary'>
                 Novo
             </Link>
-
+            
             <Table striped bordered hover>
                 <thead>
                     <tr>

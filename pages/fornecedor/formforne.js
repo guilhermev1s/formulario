@@ -33,12 +33,17 @@ const formforne = () => {
             <Form>
                 <Form.Group className="mb-3" controlId="razaosocial">
                     <Form.Label>Razão Social: </Form.Label>
-                    <Form.Control type="text" {...register('razaosocial')} />
+                    <Form.Control type="text" {...register('razaosocial', cadastroValidators.razaosocial)} />
+                    {
+                        errors.razaosocial &&
+                        <p className='mt-1 text-danger'>{errors.razaosocial.message}</p>
+                    }
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="cnpj">
                     <Form.Label>CNPJ: </Form.Label>
-                    <Form.Control type="text" {...register('cnpj', cadastroValidators.cnpj)} />
+                    <Form.Control mask='99.999.999/9999-99' type="text" 
+                    {...register('cnpj', cadastroValidators.cnpj)} onChange={handleChange} />
                     {
                         errors.cnpj &&
                         <p className='mt-1 text-danger'>{errors.cnpj.message}</p>
@@ -47,7 +52,11 @@ const formforne = () => {
 
                 <Form.Group className="mb-3" controlId="prazo">
                     <Form.Label>Prazo: </Form.Label>
-                    <Form.Control type="date" {...register('prazo')} />
+                    <Form.Control type="date" {...register('prazo', cadastroValidators.prazo)} />
+                    {
+                        errors.prazo &&
+                        <p className='mt-1 text-danger'>{errors.prazo.message}</p>
+                    }
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="endereco">
